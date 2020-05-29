@@ -1,4 +1,4 @@
 /.idea
 .DS_Store
-**/php/vendor
-**/php/mail-config.php
+/src/.env
+*node_modules
