@@ -57,14 +57,11 @@ indexRoute.route("/apis")
 
     mg.messages().send(data, function (error) {
       if (error) {
-        response.send(Buffer.from(`
+        return response.send(Buffer.from(`
 <div class='alert alert-danger' role='alert'><strong>Oh snap!</strong> Unable to send email error with email sender</div>`
         ))
       }
     })
-
-
-
 
     return response.send(Buffer.from("<div class='alert alert-success' role='alert'>Email successfully sent.</div>"))
 
