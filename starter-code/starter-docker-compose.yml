@@ -1,8 +1,8 @@
 version: '3.1'
 services:
 
-  letsencrypt-nginx-container:
-    container_name: 'letsencrypt-nginx-container'
+  staging:
+    container_name: 'staging'
     image: nginx:latest
     ports:
       - "80:80"

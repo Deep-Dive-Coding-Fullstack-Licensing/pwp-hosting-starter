@@ -1,6 +1,6 @@
 # ISSUING  SSL CERTS WITH DOCKER CERTBOT
 ## [original documentation](https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx)
-### Issuing the initial cert
+## Issuing the initial cert
 1. add `/starter-code/starter-docker-compose.yml` to your project's `/docker-compose.yml`
 2. add `/starter-code/nginx.conf` to `/nginx.conf`
 3. run `sudo docker-compose up -d`
@@ -53,20 +53,10 @@ certonly --webroot \
 --email your@email.you \
 -d dont-blindly-copy-past.face-palm -d www.dont-blindly-copy-past.face-palm
 ```
-### Setting Up Production Containers for PWP
+## Setting Up Production Containers for PWP
 1. add `/starter-code/frontend.Dockerfile` to your project's `/public_html/Dockerfile`
-2. add `/starter-code/php.Dockerfile` to your project's `/php/Dockerfile`
-
-
-* __optional__: If you are not using HTTPS
-	* add `/starter-code/default-docker-compose.yml` to your project's `/docker-compose.yml`
-	* add `/starter-code/default.conf` to `/production.conf`
-		* make sure to replace every instance of `dont-blindly-copy-past.face-palm` with your actual url
-	* add `/starter-code/default-doceker-compose` to your projects
-`/docker-compose.yml`
-		* make sure to replace every instance of `dont-blindly-copy-past.face-palm` with your actual url
-	* run `docker-compose up -d`
-### Configuring Containers to Use HTTPS
+2. add `/starter-code/src.Dockerfile` to your project's `/src/Dockerfile`
+## Configuring Containers to Use HTTPS
 1. add `/starter-code/production.conf` to your projects `/production.conf`  
 	* make sure to replace every instance of `dont-blindly-copy-past.face-palm` with your actual url
 2. replace `/starter-code/production-doceker-compose.yml` with your project's `/docker-compose.yml` \
@@ -75,9 +65,5 @@ certonly --webroot \
 4. run `sudo openssl dhparam -out dh-param/dhparam-2048.pem 2048` in your project on the host machine.
 5. run `docker-compose up -d`
 
-### Configuring cron for automated reissuing of SSL certs.
-**If you do not do this step, you will start getting errors about invalid certificates in 90 days.**
-
-Instructions an be found at the [original link](https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx).  Follow in the instructions in the sections "How to Renew Let's Encrypt SSL Certificates with Certbot and Docker" and "Set Up a Cron Job to Automatically Renew Let's Encrypt SSL/TLS Certificates."
-
-If you wish, you can continue with the site-hardening steps after those sections, however they are not required for the bootcamp.
+## Renewing SSL Certs
+Message @Gkephart 
