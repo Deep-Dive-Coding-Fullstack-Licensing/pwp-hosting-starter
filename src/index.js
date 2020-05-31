@@ -39,7 +39,7 @@ indexRoute.route("/apis")
     const errors = validationResult(request);
 
     if(request.recaptcha.error) {
-      console.log(request.recaptcha.error)
+      return response.send(`<div class='alert alert-danger' role='alert'><strong>Oh snap!</strong>There was an error with Recaptcha</div>`)
     }
 
     if (!errors.isEmpty()) {
@@ -65,7 +65,7 @@ indexRoute.route("/apis")
     mg.messages().send(data, function (error) {
       if (error) {
         return response.send(Buffer.from(`
-<div class='alert alert-danger' role='alert'><strong>Oh snap!</strong> Unable to send email error with email sender</div>`
+<div class='alert alert-danger' role='alert'><strong>Oh snap!</strong> Unable to send email</div>`
         ))
       }
     })
