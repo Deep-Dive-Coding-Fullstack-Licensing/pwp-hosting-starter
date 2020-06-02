@@ -1,10 +1,8 @@
 # ISSUING  SSL CERTS WITH DOCKER CERTBOT
 ## [original documentation](https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx)
 ## Issuing the initial cert
-1. add `/starter-code/starter-docker-compose.yml` to your project's `/docker-compose.yml`
-2. add `/starter-code/nginx.conf` to `/nginx.conf`
-3. run `sudo docker-compose up -d`
-4. run the command below
+1.  in your project run `sudo docker-compose up -d`
+2. run the command below
 ```
 sudo docker container run -it --rm \
 -v /docker-volumes/pwp/etc/letsencrypt:/etc/letsencrypt \
@@ -38,8 +36,8 @@ certonly --webroot \
 	* issues the ssl certificate for staging purposes
 * `-d dont-blindly-copy-past.face-palm`
 	* specifies the domain/domains to verify for the ssl certificate
-5. If the command from step 3 is successful run `sudo rm -rf /docker-volumes/pwp`
-6. run the same command from step 3 but this time without the staging flag and make sure add an email for reminders on when to reissue the certificate
+3. If the command from the previous step is successful run `sudo rm -rf /docker-volumes/pwp`
+4. run large command from before but this time without the staging flag and make sure add an email for reminders on when to reissue the certificate
 ```
 sudo docker container run -it --rm \
 -v /docker-volumes/pwp/etc/letsencrypt:/etc/letsencrypt \
@@ -53,9 +51,7 @@ certonly --webroot \
 --email your@email.you \
 -d dont-blindly-copy-past.face-palm -d www.dont-blindly-copy-past.face-palm
 ```
-## Setting Up Production Containers for PWP
-1. add `/starter-code/frontend.Dockerfile` to your project's `/public_html/Dockerfile`
-2. add `/starter-code/src.Dockerfile` to your project's `/src/Dockerfile`
+
 ## Configuring Containers to Use HTTPS
 1. add `/starter-code/production.conf` to your projects `/production.conf`  
 	* make sure to replace every instance of `dont-blindly-copy-past.face-palm` with your actual url
