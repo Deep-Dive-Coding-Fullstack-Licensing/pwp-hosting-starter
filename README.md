@@ -53,7 +53,7 @@ certonly --webroot \
 ```
 
 ## Configuring Containers to Use HTTPS
-1. add `/starter-code/production.conf` to your projects `/production.conf`  
+1. add `/starter-code/production.conf` to your projects `/production.conf`
 	* make sure to replace every instance of `dont-blindly-copy-past.face-palm` with your actual url
 2. replace `/starter-code/production-doceker-compose.yml` with your project's `/docker-compose.yml` \
 	* make sure to replace every instance of `dont-blindly-copy-past.face-palm` with your actual url
@@ -62,4 +62,6 @@ certonly --webroot \
 5. run `docker-compose up -d`
 
 ## Renewing SSL Certs
-Message @Gkephart 
+1. `cd pwp`
+2. `sudo docker container run -it --rm -v /docker-volumes/pwp/etc/letsencrypt:/etc/letsencrypt -v /docker-volumes/pwp/etc/lib/letsencrypt:/var/lib/letsencrypt -v $(pwd)/public_html:/data/letsencrypt -v "/docker-volumes/pwp/var/log/:/var/log/letsencrypt" certbot/certbot renew --webroot --webroot-path=/data/letsencrypt`
+3. If step 2 is successful run `docker-compose down && docker-compose up -d`
